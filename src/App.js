@@ -16,7 +16,7 @@ class App extends Component {
 
 
   makeHttpRequestWithPage = async pageNumber => {
-    const response = await fetch(`https://reqres.in/api/users?page=${pageNumber}`, {
+    const response = await fetch(`http://localhost:3040/api/paginate?pageNo=${pageNumber}`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -41,10 +41,10 @@ class App extends Component {
 
     if (this.state.users !== null) {
       users = this.state.users.map(user => (
-        <tr key={user.id}>
-          <td>{user.id}</td>
-          <td>{user.first_name}</td>
-          <td>{user.last_name}</td>
+        <tr key={user._id}>
+          <td>{user._id}</td>
+          <td>{user.title}</td>
+          <td>{user.description}</td>
         </tr>
       ));
     }
